@@ -1,0 +1,13 @@
+components:
+  schemas:
+    PetResponse:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: string
+            name:
+              type: String
+          required:
+            - id
+            - name
