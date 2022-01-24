@@ -1,9 +1,6 @@
 package com.ftn.studentservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,10 +10,13 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private int ects;
 
+    @OneToMany(mappedBy = "course")
     private List<CourseInstance> courseInstances;
 
 }

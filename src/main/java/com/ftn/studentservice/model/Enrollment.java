@@ -1,9 +1,6 @@
 package com.ftn.studentservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Enrollment {
@@ -14,7 +11,11 @@ public class Enrollment {
 
     private int points;
 
+    @ManyToOne
+    @JoinColumn(name = "course_instance")
     private CourseInstance courseInstance;
 
+    @ManyToOne
+    @JoinColumn(name="student_id", nullable=false)
     private Student student;
 }

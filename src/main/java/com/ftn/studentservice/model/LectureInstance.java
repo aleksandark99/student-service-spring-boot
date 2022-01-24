@@ -1,9 +1,6 @@
 package com.ftn.studentservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,7 +10,10 @@ public class LectureInstance {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "course_instance")
     private CourseInstance courseInstance;
 
+    @ManyToMany
     private List<Lecturer> lecturers;
 }

@@ -1,9 +1,6 @@
 package com.ftn.studentservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -13,10 +10,14 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToOne
+    @JoinColumn
     private Student student;
 
+    @OneToMany(mappedBy="account")
     private List<Payment> payments;
 
+    @Column(nullable = false)
     private String accountNumber;
 
 }

@@ -1,9 +1,6 @@
 package com.ftn.studentservice.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -14,13 +11,19 @@ public class CourseInstance {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private LocalDate startDate;
 
+    @Column(nullable = false)
     private LocalDate endDate;
 
+    @OneToMany(mappedBy = "courseInstance")
     private List<Enrollment> enrollments;
 
+    @OneToMany(mappedBy = "courseInstance")
     private List<LectureInstance> lectureInstances;
 
+    @ManyToOne
+    @JoinColumn(name = "course_id")
     private Course course;
 }

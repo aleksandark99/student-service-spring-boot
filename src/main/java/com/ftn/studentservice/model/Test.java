@@ -14,15 +14,15 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private  Enrollment enrollment;
-
-    private String title;
-
-    private LocalDateTime date;
-
-    private boolean graded;
-
-    private boolean attending;
-
-    private int points;
+//    private  Enrollment enrollment;
+//
+//    private String title;
+//
+//    private LocalDateTime date;
+//
+//    private boolean graded;
+//
+//    private boolean attending;
+//
+//    private int points;
 }
