@@ -7,7 +7,7 @@ import java.util.List;
 public class Lecturer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @OneToOne
@@ -15,5 +15,6 @@ public class Lecturer {
     private User user;
 
     @ManyToMany
+    @JoinTable
     private List<LectureInstance> lectureInstances;
 }

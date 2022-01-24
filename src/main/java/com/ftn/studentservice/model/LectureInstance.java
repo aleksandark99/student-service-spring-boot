@@ -7,13 +7,13 @@ import java.util.List;
 public class LectureInstance {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
     @JoinColumn(name = "course_instance")
     private CourseInstance courseInstance;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "lectureInstances")
     private List<Lecturer> lecturers;
 }
