@@ -10,12 +10,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.ftn.studentservice.controller.Headers.enrichWithPagingHeaders;
-import static  org.springframework.http.ResponseEntity.ok;
+import static org.springframework.http.ResponseEntity.ok;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Function;
+
 @RestController
 public class TestController implements PetApi {
 
@@ -23,7 +24,8 @@ public class TestController implements PetApi {
     public ResponseEntity<PetResponse> getPetById(String petId) {
         PetResponse pet = new PetResponse();
         pet.setName("aaa");
-        return ResponseEntity.ok(pet);    }
+        return ResponseEntity.ok(pet);
+    }
 
     @Override
     public ResponseEntity<List<PetResponse>> getPets() {
@@ -112,7 +114,7 @@ public class TestController implements PetApi {
         PetResponse p2 = new PetResponse();
         p1.setName("test1");
         p2.setName("test2");
-        return enrichWithPagingHeaders(ok(),examplePage).body(Arrays.asList(p1,p2));
+        return enrichWithPagingHeaders(ok(), examplePage).body(Arrays.asList(p1, p2));
     }
 
 }

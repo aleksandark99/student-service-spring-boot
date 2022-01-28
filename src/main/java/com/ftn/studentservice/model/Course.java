@@ -1,9 +1,13 @@
 package com.ftn.studentservice.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Data
 public class Course {
 
     @Id
@@ -14,9 +18,12 @@ public class Course {
     private String name;
 
     @Column(nullable = false)
+    private String code;
+
+    @Column(nullable = false)
     private int ects;
 
     @OneToMany(mappedBy = "course")
-    private List<CourseInstance> courseInstances;
+    private List<CourseInstance> courseInstances = new ArrayList<>();
 
 }

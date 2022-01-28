@@ -1,8 +1,12 @@
 package com.ftn.studentservice.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
 public class Account {
 
@@ -14,8 +18,8 @@ public class Account {
     @JoinColumn
     private Student student;
 
-    @OneToMany(mappedBy="account")
-    private List<Payment> payments;
+    @OneToMany(mappedBy = "account")
+    private List<Payment> payments = new ArrayList<>();
 
     @Column(nullable = false)
     private String accountNumber;

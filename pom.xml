@@ -57,6 +57,21 @@
             <version>5.3.5.Final</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.3.6</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -102,18 +117,6 @@
                     <output>${project.build.directory}/generated-sources</output>
                 </configuration>
                 <executions>
-<!--                    <execution>-->
-<!--                        <configuration>-->
-<!--                            <inputSpec>${project.basedir}/src/main/resources/open-api.yml</inputSpec>-->
-<!--                            <configOptions>-->
-<!--                                <delegatePattern>true</delegatePattern>-->
-<!--                            </configOptions>-->
-<!--                        </configuration>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                        <id>ftn-student-service-api-spec</id>-->
-<!--                    </execution>-->
                     <execution>
                         <id>ftn-student-service-model-spec</id>
                         <goals>

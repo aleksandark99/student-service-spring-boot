@@ -1,8 +1,12 @@
 package com.ftn.studentservice.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
 public class LectureInstance {
 
@@ -15,5 +19,5 @@ public class LectureInstance {
     private CourseInstance courseInstance;
 
     @ManyToMany(mappedBy = "lectureInstances")
-    private List<Lecturer> lecturers;
+    private List<Lecturer> lecturers = new ArrayList<>();
 }

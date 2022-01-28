@@ -9,9 +9,15 @@ servers:
 
 tags:
   - name: Pet
+  - name: Course
+  - name: Course Instance
 
 paths:
   /pets:
     $ref: 'api-paths/pet-api.yaml#/pets'
   /pets/{petId}:
     $ref: 'api-paths/pet-api.yaml#/pet-by-id'
+  /courses:
+    $ref: 'api-paths/course-api.yaml#/courses'
+  /course-instances/{courseId}:
+    $ref: 'api-paths/course-instance-api.yaml#/course-instances'

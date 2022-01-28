@@ -1,0 +1,14 @@
+components:
+  schemas:
+    CourseInstanceResponse:
+      allOf:
+        - type: object
+          properties:
+            name:
+              type: string
+            startDate:
+              type: string
+            endDate:
+              type: string
+            id:
+              type: integer

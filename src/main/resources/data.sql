@@ -18,8 +18,38 @@ INSERT INTO `student_service`.`lecturer` (`id`, `user_id`) VALUES (1,2);
 INSERT INTO `student_service`.`admin` (`id`, `user_id`) VALUES (1,3);
 
 --COURSE INSERTS
-INSERT INTO `student_service`.`course` (`id`, `ects`, `name`)
-VALUES (1, 5, 'Object oriented programming');
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (1,"testCode1", 5, 'Object oriented programming');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (2,"testCode2", 3, 'Java1');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (3,"testCode3", 4, 'Java2');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (4,"testCode4", 4, 'Math1');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (5,"testCode5", 6, 'Math2');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (6,"testCode6", 8, 'Algorithms');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (7,"testCode7", 5, 'Test123');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (8,"testCode8", 7, 'Blabla');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (9,"testCode9", 3, 'Hello');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (10,"testCode10", 2, 'From');
+
+INSERT INTO `student_service`.`course` (`id`, `code`, `ects`, `name`)
+VALUES (11,"testCode11", 4, 'Other Side');
 
 --COURSE INSTANCES INSERTS
 INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`, `course_id`)

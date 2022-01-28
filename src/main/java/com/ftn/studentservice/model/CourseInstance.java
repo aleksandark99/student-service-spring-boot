@@ -1,9 +1,13 @@
 package com.ftn.studentservice.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+@Data
 @Entity
 public class CourseInstance {
 
@@ -18,12 +22,18 @@ public class CourseInstance {
     private LocalDate endDate;
 
     @OneToMany(mappedBy = "courseInstance")
-    private List<Enrollment> enrollments;
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     @OneToMany(mappedBy = "courseInstance")
-    private List<LectureInstance> lectureInstances;
+    private List<LectureInstance> lectureInstances = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
+
+    private String name;
+    
+    public String getName(){
+        return course.getName();
+    }
 }

@@ -1,0 +1,33 @@
+#/course-instances
+course-instances:
+  get:
+    tags:
+      - Course Instance
+    operationId: getCourseInstances
+    description: desc
+    parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 10
+      - name: courseId
+        in: path
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../../api-components/CourseInstance.yaml#/components/schemas/CourseInstanceResponse'

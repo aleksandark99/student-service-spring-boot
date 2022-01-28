@@ -3,6 +3,7 @@ package com.ftn.studentservice.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,11 +19,11 @@ public class Student {
     private User user;
 
     @OneToMany(mappedBy="student")
-    private List<Enrollment> enrollments;
+    private List<Enrollment> enrollments = new ArrayList<>();
 
     @OneToOne(mappedBy = "student")
     private Account account;
 
     @OneToMany(mappedBy="student")
-    private List<Document> documents;
+    private List<Document> documents = new ArrayList<>();
 }

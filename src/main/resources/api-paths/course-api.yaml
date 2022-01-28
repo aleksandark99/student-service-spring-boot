@@ -1,0 +1,28 @@
+#/courses
+courses:
+  get:
+    tags:
+      - Course
+    operationId: getCourses
+    description: desc
+    parameters:
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 5
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../../api-components/Course.yaml#/components/schemas/CourseResponse'

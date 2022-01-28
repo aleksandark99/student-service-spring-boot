@@ -1,7 +1,10 @@
 package com.ftn.studentservice.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 public class User {
 
