@@ -9,4 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Integer> {
 
+    Page<Course> findByNameContainsOrCodeContains(String name,String code,Pageable pageable);
 }

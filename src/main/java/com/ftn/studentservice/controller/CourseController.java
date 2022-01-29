@@ -1,5 +1,6 @@
 package com.ftn.studentservice.controller;
 
+import com.ftn.student_service.api.model.CourseCreateRequest;
 import com.ftn.student_service.api.model.CourseResponse;
 import com.ftn.student_service.api.spec.v1.CourseApi;
 import com.ftn.studentservice.model.Course;
@@ -26,9 +27,15 @@ public class CourseController implements CourseApi {
     private CourseService courseService;
 
     @Override
-    public ResponseEntity<List<CourseResponse>> getCourses(Integer page, Integer size) {
-        Page<Course> courses = courseService.getCourses(page, size);
-        return enrichWithPagingHeaders(ok(),courses)
-                .body(mapper.mapAll(courses.toList(),CourseResponse.class));
+    public ResponseEntity<Void> createCourse(CourseCreateRequest courseCreateRequest) {
+        courseService.createCourse(courseCreateRequest);
+        return ResponseEntity.status(201).build();
+    }
+
+    @Override
+    public ResponseEntity<List<CourseResponse>> getCourses(Integer page, Integer size, String search) {
+        Page<Course> courses = courseService.getCourses(page, size, search);
+        return enrichWithPagingHeaders(ok(), courses)
+                .body(mapper.mapAll(courses.toList(), CourseResponse.class));
     }
 }

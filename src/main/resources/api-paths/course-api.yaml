@@ -18,6 +18,12 @@ courses:
         schema:
           type: integer
           default: 5
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ""
     responses:
       200:
         content:
@@ -26,3 +32,17 @@ courses:
               type: array
               items:
                 $ref: '../../api-components/Course.yaml#/components/schemas/CourseResponse'
+  post:
+    tags:
+      - Course
+    operationId: createCourse
+    description: desc
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../../api-components/Course.yaml#/components/schemas/CourseCreateRequest'
+    responses:
+      200:
+        description: created
+        content: {}

@@ -16,9 +16,8 @@ components:
           properties:
             name:
               type: string
-              required: true
             ects:
               type: integer
-              required: true
-              maximum: 12
-              minimum: 1
+      required:
+        - name
+        - ects
