@@ -1,5 +1,6 @@
 package com.ftn.studentservice.repository;
 
+import com.ftn.studentservice.model.Course;
 import com.ftn.studentservice.model.CourseInstance;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,4 +11,7 @@ import org.springframework.stereotype.Repository;
 public interface CourseInstanceRepository extends JpaRepository<CourseInstance, Long> {
 
     Page<CourseInstance> findAllByCourseId(Long courseId, Pageable pageable);
+
+    Page<CourseInstance> findByCourse_NameContains(String name, Pageable pageable);
+
 }

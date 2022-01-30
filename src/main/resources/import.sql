@@ -53,7 +53,22 @@ VALUES (11,"testCode11", 4, 'Other Side');
 
 --COURSE INSTANCES INSERTS
 INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`, `course_id`)
-VALUES (1,'2022-11-23 12:00:00','2022-01-23 12:00:00',1);
+VALUES (1,'2022-11-23 12:00:00','2021-01-23 12:00:00',1);
+
+INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`, `course_id`)
+VALUES (2,'2021-11-23 12:00:00','2020-01-23 12:00:00',1);
+
+INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`, `course_id`)
+VALUES (3,'2020-11-23 12:00:00','2019-01-23 12:00:00',1);
+
+INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`, `course_id`)
+VALUES (4,'2019-11-23 12:00:00','2018-01-23 12:00:00',2);
+
+INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`, `course_id`)
+VALUES (5,'2022-11-23 12:00:00','2022-01-23 12:00:00',2);
+
+INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`, `course_id`)
+VALUES (6,'2022-11-23 12:00:00','2022-01-23 12:00:00',3);
 
 --ACCOUNT INSERTS
 INSERT INTO `student_service`.`account` (`id`, `account_number`, `student_id`)

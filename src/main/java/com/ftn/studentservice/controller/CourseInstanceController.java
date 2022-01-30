@@ -28,8 +28,11 @@ public class CourseInstanceController implements CourseInstanceApi {
     private CourseInstanceService courseInstanceService;
 
     @Override
-    public ResponseEntity<List<CourseInstanceResponse>> getCourseInstances(Integer courseId, Integer page, Integer size) {
-        Page<CourseInstance> courseInstances = courseInstanceService.getCourseInstances(courseId.longValue(), page, size);
-        return enrichWithPagingHeaders(ok(),courseInstances)
-                .body(mapper.mapAll(courseInstances.toList(), CourseInstanceResponse.class));    }
+    public ResponseEntity<List<CourseInstanceResponse>> getCourseInstances(Integer page, Integer size, Integer courseId, String search) {
+        Page<CourseInstance> courseInstances = courseInstanceService.getCourseInstances(courseId, page, size, search);
+        return enrichWithPagingHeaders(ok(), courseInstances)
+                .body(mapper.mapAll(courseInstances.toList(), CourseInstanceResponse.class));
+    }
+
+
 }

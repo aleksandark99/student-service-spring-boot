@@ -10,6 +10,8 @@ components:
               type: string
             ects:
               type: integer
+            id:
+              type: integer
     CourseCreateRequest:
       allOf:
         - type: object

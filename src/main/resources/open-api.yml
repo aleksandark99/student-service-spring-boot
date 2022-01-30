@@ -19,5 +19,5 @@ paths:
     $ref: 'api-paths/pet-api.yaml#/pet-by-id'
   /courses:
     $ref: 'api-paths/course-api.yaml#/courses'
-  /course-instances/{courseId}:
+  /course-instances:
     $ref: 'api-paths/course-instance-api.yaml#/course-instances'

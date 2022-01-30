@@ -14,9 +14,12 @@ public class CourseInstanceService {
     @Autowired
     private CourseInstanceRepository courseInstanceRepository;
 
-    public Page<CourseInstance> getCourseInstances(Long courseId, Integer page, Integer size) {
-        Pageable pageable = PageRequest.of(page,size);
-
-        return courseInstanceRepository.findAllByCourseId(courseId,pageable);
+    public Page<CourseInstance> getCourseInstances(Integer courseId, Integer page, Integer size, String search) {
+        Pageable pageable = PageRequest.of(page, size);
+        if (courseId != null)
+            return courseInstanceRepository.findAllByCourseId(Long.valueOf(courseId), pageable);
+        else
+            return courseInstanceRepository.findByCourse_NameContains(search,pageable);
+//            return courseInstanceRepository.findAll(pageable);
     }
 }

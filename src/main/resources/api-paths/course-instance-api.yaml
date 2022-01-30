@@ -19,10 +19,16 @@ course-instances:
           type: integer
           default: 10
       - name: courseId
-        in: path
-        required: true
+        in: query
+        required: false
         schema:
           type: integer
+      - name: search
+        in: query
+        required: false
+        schema:
+          type: string
+          default: ''
     responses:
       200:
         content:
