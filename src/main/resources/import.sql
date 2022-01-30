@@ -2,14 +2,20 @@
 INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
 VALUES (1,'student@gmail.com','studentFirstName','studentLastName','student');
 
+
+
 INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
 VALUES (2,'professor1@gmail.com','professor1','professor1','professor1');
 
 INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
 VALUES (3,'admin@gmail.com','admin','admin','admin');
 
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (4,'student4@gmail.com','student4FirstName','student4LastName','student4');
+
 --STUDENT INSERTS
 INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (1,1);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (2,4);
 
 --LECTURER INSERTS
 INSERT INTO `student_service`.`lecturer` (`id`, `user_id`) VALUES (1,2);
@@ -81,6 +87,7 @@ VALUES (1,'Acceptance letter','http://localhost:9000/2313132',1);
 --ENROLLMENT INSERTS
 INSERT INTO `student_service`.`enrollment` (`id`, `points`, `course_instance`, `student_id`)
  VALUES (1,33,1,1);
+
 
 --LECTURE INSTANCE INSERTS
 INSERT INTO `student_service`.`lecture_instance` (`id`, `course_instance`)

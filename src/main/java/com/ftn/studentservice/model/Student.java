@@ -1,5 +1,6 @@
 package com.ftn.studentservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,8 +16,10 @@ public class Student {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name="user_id")
     private User user;
+
+    @Column(name = "index_", unique = false, nullable = true)
+    private String index;
 
     @OneToMany(mappedBy="student")
     private List<Enrollment> enrollments = new ArrayList<>();
@@ -26,4 +29,6 @@ public class Student {
 
     @OneToMany(mappedBy="student")
     private List<Document> documents = new ArrayList<>();
+
+
 }
