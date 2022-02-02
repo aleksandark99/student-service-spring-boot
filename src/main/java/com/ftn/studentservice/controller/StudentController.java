@@ -34,13 +34,13 @@ public class StudentController {
     public ResponseEntity<List<StudentDto>> searchStudents(@PathVariable("courseInstanceId") Integer courseInstanceId,
                                                            @RequestBody SearchStudentDto searchStudentDto){
 
-        Page<Student> students = studentService.getStudent(null, searchStudentDto);
+        Page<Student> students = studentService.getStudent(courseInstanceId, searchStudentDto);
 
         return enrichWithPagingHeaders(ok(), students)
                 .body(students.toList().stream().map(student -> StudentDto.builder()
                         .firstName(student.getUser().getFirstName())
                         .lastName(student.getUser().getLastName())
-                        .id(student.getId()).index(student.getIndex()).build()).collect(Collectors.toList()));
+                        .id(student.getUser().getId()).index(student.getIndex()).build()).collect(Collectors.toList()));
     }
 
 

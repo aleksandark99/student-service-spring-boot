@@ -20,7 +20,7 @@ public class StudentService {
 
         Pageable pageable = PageRequest.of(searchStudentDto.getPageNo(), searchStudentDto.getPageSize());
 
-        if (courseInstanceId != null){
+        if (courseInstanceId > -1){
 
             return studentRepository.findByEnrollments_CourseInstance_Id(Long.valueOf(courseInstanceId), pageable);
 

@@ -2,8 +2,6 @@
 INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
 VALUES (1,'student@gmail.com','studentFirstName','studentLastName','student');
 
-
-
 INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
 VALUES (2,'professor1@gmail.com','professor1','professor1','professor1');
 
@@ -13,9 +11,53 @@ VALUES (3,'admin@gmail.com','admin','admin','admin');
 INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
 VALUES (4,'student4@gmail.com','student4FirstName','student4LastName','student4');
 
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (5,'student5@gmail.com','student5FirstName','student5LastName','student5');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (6,'student6@gmail.com','student6FirstName','student6LastName','student6');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (7,'student7@gmail.com','student7FirstName','student7LastName','student7');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (8,'student8@gmail.com','student8FirstName','student8LastName','student8');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (9,'student9@gmail.com','student9FirstName','student9LastName','student9');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (10,'student10@gmail.com','student10FirstName','student10LastName','student10');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (11,'student11@gmail.com','student11FirstName','student11LastName','student11');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (12,'student12@gmail.com','student12FirstName','student12LastName','student12');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (13,'student13@gmail.com','student13FirstName','student13LastName','student13');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (14,'student14@gmail.com','student14FirstName','student14LastName','student14');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (15,'student15@gmail.com','student15FirstName','student15LastName','student15');
+
 --STUDENT INSERTS
 INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (1,1);
 INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (2,4);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (3,5);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (4,6);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (5,7);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (6,8);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (7,9);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (8,10);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (9,11);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (10,12);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (11,13);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (12,14);
+INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (13,15);
 
 --LECTURER INSERTS
 INSERT INTO `student_service`.`lecturer` (`id`, `user_id`) VALUES (1,2);
