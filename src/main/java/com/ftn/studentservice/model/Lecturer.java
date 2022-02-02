@@ -19,7 +19,7 @@ public class Lecturer {
     private User user;
 
     @Column(name = "lecturer_code", unique = true)
-    private String lectureCode;
+    private String lecturerCode;
 
     @ManyToMany
     @JoinTable
