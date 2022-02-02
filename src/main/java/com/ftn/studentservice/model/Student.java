@@ -30,5 +30,4 @@ public class Student {
     @OneToMany(mappedBy="student")
     private List<Document> documents = new ArrayList<>();
 
-
 }

@@ -19,7 +19,6 @@ public class CourseInstanceService {
         if (courseId != null)
             return courseInstanceRepository.findAllByCourseId(Long.valueOf(courseId), pageable);
         else
-            return courseInstanceRepository.findByCourse_NameContains(search,pageable);
-//            return courseInstanceRepository.findAll(pageable);
+            return courseInstanceRepository.findByCourse_NameContains(search, pageable);
     }
 }

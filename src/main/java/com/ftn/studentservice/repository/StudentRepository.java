@@ -11,6 +11,7 @@ import java.util.List;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
+
     public Page<Student> findByEnrollments_CourseInstance_Id(Long id, Pageable pageable);
     public Page<Student> findAllByIndexContainsOrUser_FirstNameContainsOrUser_LastNameContains(String index,String firstName,String lastName, Pageable pageable);
 }
