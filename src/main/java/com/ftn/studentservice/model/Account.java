@@ -24,4 +24,7 @@ public class Account {
     @Column(nullable = false)
     private String accountNumber;
 
+    @Column
+    private Double balance;
+
 }
