@@ -24,7 +24,7 @@ public class Student {
     @OneToMany(mappedBy="student")
     private List<Enrollment> enrollments = new ArrayList<>();
 
-    @OneToOne(mappedBy = "student")
+    @OneToOne(mappedBy = "student",fetch = FetchType.LAZY)
     private Account account;
 
     @OneToMany(mappedBy="student")

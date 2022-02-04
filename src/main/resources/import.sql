@@ -1,12 +1,18 @@
+--ROLE INSERTS
+INSERT INTO `student_service`.`role`(`id`,`description`,`name`)VALUES (1,'Admin','ROLE_ADMIN');
+INSERT INTO `student_service`.`role`(`id`,`description`,`name`)VALUES (2,'Student','ROLE_STUDENT');
+INSERT INTO `student_service`.`role`(`id`,`description`,`name`)VALUES (3,'Professor','ROLE_PROFESSOR');
+INSERT INTO `student_service`.`role`(`id`,`description`,`name`)VALUES (4,'Assistant','ROLE_ASSISTANT');
+
 --USER INSERTS
-INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
-VALUES (1,'student@gmail.com','studentFirstName','studentLastName','student');
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`,`role_id`)
+VALUES (1,'s','s','s','$2a$12$7wQ2UiM2FYac90mnmi.v0ONxM6NRHOwTYD75Uuqkvdj71ndGj3WD.',2);
 
-INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
-VALUES (2,'professor1@gmail.com','professor1','professor1','professor1');
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`,`role_id`)
+VALUES (2,'p','p','p','$2a$12$SmhEc.S/7I4gVZNgNROwsOF.JKPCB3XfBxTaP9oIlXtfhcNUKSIjy',3);
 
-INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
-VALUES (3,'admin@gmail.com','admin','admin','admin');
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`,`role_id`)
+VALUES (3,'a','a','a','$2a$12$dM6A/PMBOtylhztcU.TbR.r177ileZzE84QBHgIIaEcAEZCcSLfqC',1);
 
 INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
 VALUES (4,'student4@gmail.com','student4FirstName','student4LastName','student4');
@@ -118,10 +124,6 @@ VALUES (5,'2022-11-23 12:00:00','2022-01-23 12:00:00',2);
 INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`, `course_id`)
 VALUES (6,'2022-11-23 12:00:00','2022-01-23 12:00:00',3);
 
---ACCOUNT INSERTS
-INSERT INTO `student_service`.`account` (`id`, `account_number`, `student_id`)
-VALUES (1,'AC23232323',1);
-
 --DOCUMENT INSERTS
 INSERT INTO `student_service`.`document` (`id`, `title`, `url`, `student_id`)
 VALUES (1,'Acceptance letter','http://localhost:9000/2313132',1);
@@ -139,6 +141,13 @@ VALUES (1,1);
 INSERT INTO `student_service`.`lecturer_lecture_instances` (`lecturers_id`, `lecture_instances_id`)
 VALUES (1,1);
 
+--ACCOUNT INSERTS
+INSERT INTO `student_service`.`account` (`id`, `account_number`,`balance`, `student_id`)
+VALUES (1,'AC23232323',2400.00,1);
+
 --PAYMENT INSERTS
 INSERT INTO `student_service`.`payment` (`id`, `amount`, `date`, `account_id`)
 VALUES (1,2000.00,'2022-01-23 12:00:00',1);
+
+INSERT INTO `student_service`.`payment` (`id`, `amount`, `date`, `account_id`)
+VALUES (2,-200.00,'2022-01-23 12:00:00',1);

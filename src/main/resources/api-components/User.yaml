@@ -1,0 +1,42 @@
+components:
+  schemas:
+    LoginResponse:
+      allOf:
+        - type: object
+          properties:
+            token:
+              type: string
+            role:
+              type: string
+    LoginRequest:
+      allOf:
+        - type: object
+          properties:
+            username:
+              type: string
+            password:
+              type: string
+      required:
+        - username
+        - password
+    RegisterRequest:
+      allOf:
+        - type: object
+          properties:
+            firstName:
+              type: string
+            lastName:
+              type: string
+            email:
+              type: String
+            role:
+              enum:
+                - 'STUDENT'
+                - 'PROFESSOR'
+                - 'ASSISTANT'
+      required:
+        - username
+        - password
+        - firstName
+        - lastName
+        - role

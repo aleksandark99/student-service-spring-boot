@@ -1,0 +1,46 @@
+#/courses
+account:
+  get:
+    tags:
+      - Account
+    operationId: getMyAccount
+    description: desc
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              $ref: '../../api-components/Account.yaml#/components/schemas/AccountResponse'
+  put:
+    tags:
+      - Account
+    operationId: makePayment
+    description: desc
+    parameters:
+      - name: amount
+        in: query
+        required: false
+        schema:
+          type: number
+          default: 0
+          min: 100
+          max: 50000
+    responses:
+      200:
+        description: updated
+        content: {}
+
+payments:
+  get:
+    tags:
+      - Account
+    operationId: getMyAccount
+    description: desc
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../../api-components/Account.yaml#/components/schemas/PaymentResponse'

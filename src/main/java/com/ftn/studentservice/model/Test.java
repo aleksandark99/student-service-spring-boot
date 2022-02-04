@@ -2,12 +2,11 @@ package com.ftn.studentservice.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,15 +16,17 @@ public class Test {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    private  Enrollment enrollment;
-//
-//    private String title;
-//
-//    private LocalDateTime date;
-//
-//    private boolean graded;
-//
-//    private boolean attending;
-//
-//    private int points;
+    private String title;
+
+    private LocalDateTime date;
+
+    private int maxPoints;
+
+    private String place;
+
+    @OneToOne
+    private  Enrollment enrollment;
+
+    @OneToMany(mappedBy = "test")
+    private List<TestStudentInstance> testStudentInstances = new ArrayList<>();
 }

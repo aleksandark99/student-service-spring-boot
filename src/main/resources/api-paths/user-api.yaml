@@ -1,0 +1,33 @@
+#/users
+users:
+  post:
+    tags:
+      - User
+    operationId: login
+    description: desc
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../../api-components/User.yaml#/components/schemas/LoginRequest'
+    responses:
+      200:
+        description: login
+        content:
+          application/json:
+            schema:
+              $ref: '../../api-components/User.yaml#/components/schemas/LoginResponse'
+
+user-register:
+  post:
+    tags:
+      - User
+    operationId: register
+    description: desc
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../../api-components/User.yaml#/components/schemas/RegisterRequest'
+    responses:
+      200:

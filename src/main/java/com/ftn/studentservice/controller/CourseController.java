@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,6 +33,7 @@ public class CourseController implements CourseApi {
         return ResponseEntity.status(201).build();
     }
 
+//    @PreAuthorize("hasRole('ADMIN')")
     @Override
     public ResponseEntity<List<CourseResponse>> getCourses(Integer page, Integer size, String search) {
         Page<Course> courses = courseService.getCourses(page, size, search);

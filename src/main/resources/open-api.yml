@@ -11,7 +11,8 @@ tags:
   - name: Pet
   - name: Course
   - name: Course Instance
-
+  - name: User
+  - name: Account
 paths:
   /pets:
     $ref: 'api-paths/pet-api.yaml#/pets'
@@ -21,3 +22,11 @@ paths:
     $ref: 'api-paths/course-api.yaml#/courses'
   /course-instances:
     $ref: 'api-paths/course-instance-api.yaml#/course-instances'
+  /auth/login:
+    $ref: 'api-paths/user-api.yaml#/users'
+  /auth/register:
+    $ref: 'api-paths/user-api.yaml#/user-register'
+  /account:
+    $ref: 'api-paths/account-api.yaml#/account'
+  /account/payments:
+    $ref: 'api-paths/account-api.yaml#/payments'
