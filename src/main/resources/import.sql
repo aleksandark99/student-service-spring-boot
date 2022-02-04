@@ -50,6 +50,12 @@ VALUES (14,'student14@gmail.com','student14FirstName','student14LastName','stude
 INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
 VALUES (15,'student15@gmail.com','student15FirstName','student15LastName','student15');
 
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (16,'professor16@gmail.com','professor16','professor16','professor16');
+
+INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, `password`)
+VALUES (17,'professor16@gmail.com','professor17','professor17','professor17');
+
 --STUDENT INSERTS
 INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (1,1);
 INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (2,4);
@@ -66,7 +72,9 @@ INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (12,14);
 INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (13,15);
 
 --LECTURER INSERTS
-INSERT INTO `student_service`.`lecturer` (`id`, `user_id`) VALUES (1,2);
+INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (1,2, 'lecturerCode2');
+INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (2,16, 'lecturerCode16');
+INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (3,17, 'lecturerCode17');
 
 --ADMIN INSERTS
 INSERT INTO `student_service`.`admin` (`id`, `user_id`) VALUES (1,3);
@@ -133,13 +141,24 @@ INSERT INTO `student_service`.`enrollment` (`id`, `points`, `course_instance`, `
  VALUES (1,33,1,1);
 
 
+
 --LECTURE INSTANCE INSERTS
 INSERT INTO `student_service`.`lecture_instance` (`id`, `course_instance`)
 VALUES (1,1);
+INSERT INTO `student_service`.`lecture_instance` (`id`, `course_instance`)
+VALUES (2,1);
+INSERT INTO `student_service`.`lecture_instance` (`id`, `course_instance`)
+VALUES (3,1);
 
 --LECTURER__LECTURE INSTANCE INSERTS (Connecting table)
 INSERT INTO `student_service`.`lecturer_lecture_instances` (`lecturers_id`, `lecture_instances_id`)
 VALUES (1,1);
+INSERT INTO `student_service`.`lecturer_lecture_instances` (`lecturers_id`, `lecture_instances_id`)
+VALUES (2,2);
+INSERT INTO `student_service`.`lecturer_lecture_instances` (`lecturers_id`, `lecture_instances_id`)
+VALUES (3,3);
+
+
 
 --ACCOUNT INSERTS
 INSERT INTO `student_service`.`account` (`id`, `account_number`,`balance`, `student_id`)

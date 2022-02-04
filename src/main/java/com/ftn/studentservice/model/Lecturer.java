@@ -18,6 +18,9 @@ public class Lecturer {
     @JoinColumn(name="user_id")
     private User user;
 
+    @Column(name = "lecturer_code", unique = true)
+    private String lecturerCode;
+
     @ManyToMany
     @JoinTable
     private List<LectureInstance> lectureInstances = new ArrayList<>();

@@ -5,7 +5,8 @@ import lombok.Data;
 
 @Data
 @Builder
-public class SearchStudentDto {
+public class SearchLecturerDto {
+
 
     private int pageNo;
     private int pageSize;
