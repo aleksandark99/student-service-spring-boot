@@ -29,7 +29,7 @@ public class AccountController implements AccountApi {
     }
 
     @Override
-    public ResponseEntity<List<PaymentResponse>> getMyAccount_0() {
+    public ResponseEntity<List<PaymentResponse>> getMyPayments() {
         List<Payment> payments = accountService.getPayments();
         return  ResponseEntity.ok(mapper.mapAll(payments, PaymentResponse.class));
     }
