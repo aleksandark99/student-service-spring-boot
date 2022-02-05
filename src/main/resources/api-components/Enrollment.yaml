@@ -1,0 +1,12 @@
+components:
+  schemas:
+    EnrollmentResponse:
+      allOf:
+        - type: object
+          properties:
+            courseName:
+              type: string
+            points:
+              type: number
+            passed:
+              type: boolean

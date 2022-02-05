@@ -13,6 +13,7 @@ tags:
   - name: Course Instance
   - name: User
   - name: Account
+  - name: Enrollment
 paths:
   /pets:
     $ref: 'api-paths/pet-api.yaml#/pets'
@@ -30,3 +31,5 @@ paths:
     $ref: 'api-paths/account-api.yaml#/account'
   /account/payments:
     $ref: 'api-paths/account-api.yaml#/payments'
+  /enrollments/my:
+    $ref: 'api-paths/enrollment-api.yaml#/student-enrollments'

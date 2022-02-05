@@ -21,4 +21,18 @@ public class Enrollment {
     @ManyToOne
     @JoinColumn(name="student_id", nullable=false)
     private Student student;
+
+    @Transient
+    private String courseName;
+
+    @Transient
+    private boolean passed;
+
+    public String getCourseName() {
+        return this.courseInstance.getName();
+    }
+
+    public boolean isPassed() {
+        return points > 50;
+    }
 }
