@@ -1,0 +1,15 @@
+#/enrollments/my
+student-enrollments:
+  get:
+    tags:
+      - Enrollment
+    operationId: getMyEnrollments
+    description: desc
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../../api-components/Enrollment.yaml#/components/schemas/EnrollmentResponse'

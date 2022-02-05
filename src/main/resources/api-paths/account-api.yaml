@@ -11,7 +11,7 @@ account:
           application/json:
             schema:
               $ref: '../../api-components/Account.yaml#/components/schemas/AccountResponse'
-  put:
+  post:
     tags:
       - Account
     operationId: makePayment
@@ -34,7 +34,7 @@ payments:
   get:
     tags:
       - Account
-    operationId: getMyAccount
+    operationId: getMyPayments
     description: desc
     responses:
       200:
