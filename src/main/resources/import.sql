@@ -57,19 +57,19 @@ INSERT INTO `student_service`.`user` (`id`, `email`, `first_name`, `last_name`, 
 VALUES (17,'professor16@gmail.com','professor17','professor17','professor17');
 
 --STUDENT INSERTS
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (1,1);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (2,4);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (3,5);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (4,6);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (5,7);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (6,8);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (7,9);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (8,10);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (9,11);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (10,12);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (11,13);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (12,14);
-INSERT INTO `student_service`.`student` (`id`, `user_id`) VALUES (13,15);
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (1,1, "SF01");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (2,4, "SF04");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (3,5, "SF05");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (4,6, "SF06");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (5,7, "SF07");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (6,8, "SF08");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (7,9, "SF09");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (8,10, "SF010");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (9,11, "SF011");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (10,12, "SF012");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (11,13, "SF013");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (12,14, "SF014");
+INSERT INTO `student_service`.`student` (`id`, `user_id`, `index_`) VALUES (13,15, "SF015");
 
 --LECTURER INSERTS
 INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (1,2, 'lecturerCode2');
@@ -140,11 +140,6 @@ VALUES (1,'Acceptance letter','http://localhost:9000/2313132',1);
 INSERT INTO `student_service`.`enrollment` (`id`, `points`, `course_instance`, `student_id`)
  VALUES (1,33,1,1);
 
---LECTURER INSERTS
---just comments
---INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (1,2, 'lecturerCode2');
---INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (2,16, 'lecturerCode16');
---INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (3,17, 'lecturerCode17');
 
 
 --LECTURE INSTANCE INSERTS

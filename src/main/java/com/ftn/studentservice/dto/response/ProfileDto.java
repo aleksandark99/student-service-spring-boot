@@ -11,6 +11,5 @@ public class ProfileDto {
     private String lastName;
     private String email;
     private String indexOrCode;
-    //private String code;
-    private String id; //from 'User' table
+    private boolean unknownUser;
 }
