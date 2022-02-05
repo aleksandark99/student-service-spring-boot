@@ -10,5 +10,5 @@ public class LecturerDto {
     private Long id;
     private String firstName = "";
     private String lastName = "";
-    private String index = "";
+    private String code = "";
 }

@@ -140,6 +140,11 @@ VALUES (1,'Acceptance letter','http://localhost:9000/2313132',1);
 INSERT INTO `student_service`.`enrollment` (`id`, `points`, `course_instance`, `student_id`)
  VALUES (1,33,1,1);
 
+--LECTURER INSERTS
+--just comments
+--INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (1,2, 'lecturerCode2');
+--INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (2,16, 'lecturerCode16');
+--INSERT INTO `student_service`.`lecturer` (`id`, `user_id`, `lecturer_code`) VALUES (3,17, 'lecturerCode17');
 
 
 --LECTURE INSTANCE INSERTS
