@@ -7,9 +7,7 @@ import com.ftn.studentservice.model.Document;
 import com.ftn.studentservice.service.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
@@ -25,18 +23,32 @@ public class DocumentController {
     @Autowired
     private DocumentService documentService;
 
+    @RequestMapping(value = "/upload", consumes = {"multipart/form-data"}, method = RequestMethod.POST)
+    public List<DocumentResponse> uploadDocuments(@RequestParam("files") List<MultipartFile> multipartFiles)  {
 
-    @PostMapping("/upload")
-    public ResponseEntity<List<DocumentResponse>> uploadDocument(List<MultipartFile> multipartFiles)  {
-//DocumentRequest documentRequest
         final List<Document> documents = documentService.uploadDocument(multipartFiles);
 
-        return ResponseEntity.ok(documents.stream().map(document -> {
+        return documents.stream().map(document -> {
             return DocumentResponse.builder()
                     .documentId(document.getId())
                     .documentTitle(document.getTitle())
-                    .url(document.getUrl()).build();
-        }).collect(Collectors.toList()));
+                    .url(document.getUrl())
+                    .createdAt(document.getCreatedAt())
+                    .build();
+        }).collect(Collectors.toList());
+    }
+
+    @GetMapping(value = "/fetch/{id}")
+    public List<DocumentResponse> fetchDocuments(@PathVariable("id") Integer studentUserId){
+        final List<Document> documents = documentService.fetchDocuments(studentUserId);
+        return documents.stream().map(document -> {
+            return DocumentResponse.builder()
+                    .documentId(document.getId())
+                    .documentTitle(document.getTitle())
+                    .url(document.getUrl())
+                    .createdAt(document.getCreatedAt())
+                    .build();
+        }).collect(Collectors.toList());
     }
 
 }

@@ -32,7 +32,7 @@ public class DocumentService {
 
     @Autowired
     private StudentRepository studentRepository; //for test only!!!
-//DocumentRequest documentRequest
+
     public List<Document> uploadDocument(List<MultipartFile> multipartFiles){
         List<Document> documents = new ArrayList<>();
         //final Student loggedInStudent = studentService.getLoggedInStudent(); //Uncomment for Exam!!!
@@ -48,6 +48,7 @@ public class DocumentService {
                         .title(multipartAttachment.getOriginalFilename())
                         .objectName(objectName)
                         .url(minioService.save(multipartAttachment.getInputStream(), minioBucketAttachment, objectName, multipartAttachment.getOriginalFilename(), multipartAttachment.getContentType()))
+                        .createdAt(String.valueOf(System.currentTimeMillis()))
                         .student(student1) //for test only!!!
                         //.student(loggedInStudent) //Uncomment for Exam!!!
                         .build();
@@ -62,6 +63,19 @@ public class DocumentService {
         });
 
         return documents;
+    }
+
+    public List<Document> fetchDocuments(Integer studentUserId){
+
+        if (studentUserId != null && studentUserId > 0){
+            final Student student = studentRepository.findByUser_Id(Long.valueOf(studentUserId));
+            return documentRepository.findByStudent(student);
+        }
+
+        return documentRepository.findAll();
+
+
+
 
     }
 }

@@ -10,4 +10,5 @@ public class DocumentResponse {
     private String url;
     private Long documentId;
     private String documentTitle;
+    private String createdAt;
 }

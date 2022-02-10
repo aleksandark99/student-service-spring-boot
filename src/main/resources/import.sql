@@ -133,8 +133,8 @@ INSERT INTO `student_service`.`course_instance` (`id`, `end_date`, `start_date`,
 VALUES (6,'2022-11-23 12:00:00','2022-01-23 12:00:00',3);
 
 --DOCUMENT INSERTS
-INSERT INTO `student_service`.`document` (`id`, `title`, `url`, `student_id`)
-VALUES (1,'Acceptance letter','http://localhost:9000/2313132',1);
+--INSERT INTO `student_service`.`document` (`id`, `title`, `url`, `student_id`)
+--VALUES (1,'Acceptance letter','http://localhost:9000/2313132',1);
 
 --ENROLLMENT INSERTS
 INSERT INTO `student_service`.`enrollment` (`id`, `points`, `course_instance`, `student_id`)
