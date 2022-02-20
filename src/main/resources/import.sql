@@ -170,3 +170,10 @@ VALUES (1,2000.00,'2022-01-23 12:00:00',1);
 
 INSERT INTO `student_service`.`payment` (`id`, `amount`, `date`, `account_id`)
 VALUES (2,-200.00,'2022-01-23 12:00:00',1);
+
+--EXAM PERIOD
+INSERT INTO `student_service`.`exam_period`(`id`,`end_date`,`name`,`start_date`)
+VALUES(1,'2022-04-23','January exam period','2022-01-23');
+
+INSERT INTO `student_service`.`test`(`id`,`date`,`max_points`,`place`,`title`,`course_instance_id`,`period_id`)
+VALUES(1,'2022-04-20',50,'NTP333','final exam',1,1);

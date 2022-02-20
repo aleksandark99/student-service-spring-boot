@@ -32,7 +32,10 @@ public class CourseInstance {
     private Course course;
 
     private String name;
-    
+
+    @OneToMany(mappedBy = "courseInstance")
+    private List<Test> tests = new ArrayList<>();
+
     public String getName(){
         return course.getName();
     }
