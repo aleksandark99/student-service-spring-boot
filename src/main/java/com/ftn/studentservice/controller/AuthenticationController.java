@@ -47,6 +47,7 @@ public class AuthenticationController implements UserApi {
         LoginResponse loginResponse= new LoginResponse();
         loginResponse.setToken(jwt);
         loginResponse.setRole(roles.get(0));
+        loginResponse.setUserId(userDetails.getId());
         return ResponseEntity.ok(loginResponse);
     }
 

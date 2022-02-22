@@ -8,6 +8,9 @@ components:
               type: string
             role:
               type: string
+            userId:
+              type: integer
+              format: int64
     LoginRequest:
       allOf:
         - type: object
