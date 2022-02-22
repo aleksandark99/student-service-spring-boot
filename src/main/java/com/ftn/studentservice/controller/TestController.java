@@ -59,7 +59,7 @@ public class TestController implements TestApi {
         try {
             testService.registerForTest(testId);
             return ResponseEntity.status(201).build();
-        } catch (InvalidBalanceException ex) {
+        } catch (Exception ex) {
             return ResponseEntity.badRequest().body(ex.getMessage());
         }
 

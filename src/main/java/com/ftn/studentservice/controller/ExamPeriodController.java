@@ -29,6 +29,6 @@ public class ExamPeriodController {
 
     @GetMapping("/exam-periods/{id}/ids-of-my-tests")
     public List<Long> getListOfMyTests(@PathVariable Long id){
-        return examPeriodService.getIdsOfTestsStudentRegisteredFor(id);
+        return examPeriodService.getIdsOfTestsStudentRegisteredFor();
     }
 }

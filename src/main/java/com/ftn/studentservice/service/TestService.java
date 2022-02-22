@@ -3,19 +3,18 @@ package com.ftn.studentservice.service;
 import com.ftn.student_service.api.model.TestInstance;
 import com.ftn.student_service.api.model.TestInstanceRequest;
 import com.ftn.studentservice.model.*;
-import com.ftn.studentservice.repository.CourseInstanceRepository;
-import com.ftn.studentservice.repository.ExamPeriodRepository;
-import com.ftn.studentservice.repository.TestRepository;
-import com.ftn.studentservice.repository.TestStudentInstanceRepository;
+import com.ftn.studentservice.repository.*;
 import com.ftn.studentservice.service.exceptions.CustomException;
 import com.ftn.studentservice.service.exceptions.InvalidBalanceException;
 import com.ftn.studentservice.utills.TimeUtills;
 import net.bytebuddy.implementation.bytecode.Throw;
-import org.joda.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TestService {
@@ -35,10 +34,23 @@ public class TestService {
     @Autowired
     private CourseInstanceRepository courseInstanceRepository;
 
-    public void registerForTest(Long testId) throws InvalidBalanceException {
+    @Autowired
+    private EnrollmentRepository enrollmentRepository;
+
+    @Autowired
+    private PaymentRepository paymentRepository;
+
+    @Autowired
+    private AccountRepository accountRepository;
+
+    @Transactional
+    public void registerForTest(Long testId) throws InvalidBalanceException, CustomException {
         Student student = studentService.getLoggedInStudent();
         if(student.getAccount().getBalance()>200) {
             Test test = testRepository.findById(testId).orElseThrow();
+            if(test.getTestStudentInstances().stream().anyMatch(testStudentInstance ->
+                    testStudentInstance.getStudent().getId().equals(student.getId()) && testStudentInstance.getTest().getId().equals(testId)))
+                throw new CustomException("You have already registered for this test");
 
             TestStudentInstance testStudentInstance = new TestStudentInstance();
             testStudentInstance.setTest(test);
@@ -46,6 +58,15 @@ public class TestService {
             testStudentInstance.setGraded(false);
             testStudentInstance.setPoints(0);
             testStudentInstanceRepository.save(testStudentInstance);
+            Payment payment = new Payment();
+            payment.setDate(LocalDateTime.now());
+            payment.setAmount(-200.00);
+            payment.setAccount(student.getAccount());
+            paymentRepository.save(payment);
+
+            student.getAccount().setBalance(student.getAccount().getBalance()-200.00);
+            accountRepository.save(student.getAccount());
+
         }
         else{
             throw new InvalidBalanceException("You dont have enought money to register for exam! price 200.00");
@@ -84,6 +105,19 @@ public class TestService {
         TestStudentInstance testStudentInstance = testStudentInstanceRepository.findById(testInstanceId)
                 .orElseThrow(() -> new CustomException("Test instance not found"));
         testStudentInstance.setPoints(points);
-        
+        testStudentInstance.setGraded(true);
+
+        var studentsEnrollment=testStudentInstance.getStudent().getEnrollments().stream()
+                .filter(enrollment ->enrollment.getCourseInstance().getId().equals(testStudentInstance.getTest().getCourseInstance().getId()))
+                .collect(Collectors.toList()).stream().findFirst();
+
+        //add points to enrollment
+        studentsEnrollment.get().setPoints(studentsEnrollment.get().getPoints()+points);
+        if(studentsEnrollment.get().getPoints()>100)
+            studentsEnrollment.get().setPassed(true);
+
+        enrollmentRepository.save(studentsEnrollment.get());
+        testStudentInstanceRepository.save(testStudentInstance);
+
     }
 }
