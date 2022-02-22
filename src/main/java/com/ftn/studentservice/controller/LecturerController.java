@@ -32,7 +32,7 @@ public class LecturerController {
 
     @PostMapping("/{courseInstanceId}")
     public ResponseEntity<List<LecturerDto>> searchLecturer(@PathVariable("courseInstanceId") Integer courseInstanceId,
-                                                            @RequestBody SearchLecturerDto searchLecturerDto){
+                                                            @RequestBody SearchLecturerDto searchLecturerDto) {
 
         Page<Lecturer> lecturers = lecturerService.getLecturer(courseInstanceId, searchLecturerDto);
 
@@ -43,5 +43,26 @@ public class LecturerController {
                         .id(lecturer.getUser().getId()).code(lecturer.getLecturerCode()).build()).collect(Collectors.toList()));
     }
 
+
+    @GetMapping("/not-in-course/{courseInstanceId}")
+    public ResponseEntity<List<LecturerDto>> getLecturersNotInCourseInstance(@PathVariable("courseInstanceId") Long courseInstanceId) {
+        return ResponseEntity.ok(lecturerService.getLecturersNotInCourseInstance(courseInstanceId).stream()
+                .map(lecturer -> LecturerDto.builder()
+                        .firstName(lecturer.getUser().getFirstName())
+                        .lastName(lecturer.getUser().getLastName())
+                        .id(lecturer.getUser().getId()).code(lecturer.getLecturerCode()).build()).collect(Collectors.toList()));
+    }
+
+
+    @PutMapping("/{lecturerId}/{courseInstanceId}")
+    public ResponseEntity<String> addLecturerToCourse(@PathVariable("lecturerId") Long lecturerId,
+                                                    @PathVariable("courseInstanceId") Long courseInstanceId){
+        try{
+            lecturerService.addLecturerToCourse(lecturerId,courseInstanceId);
+            return ResponseEntity.ok().body("Lecturer add to course");
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
 
