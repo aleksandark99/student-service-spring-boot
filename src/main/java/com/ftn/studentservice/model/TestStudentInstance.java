@@ -25,4 +25,18 @@ public class TestStudentInstance {
 
     @OneToOne
     private Student student;
+
+    @Transient
+    private String courseName;
+
+    @Transient
+    private String date;
+
+    public String getDate(){
+        return test.getDate().toString();
+    }
+
+    public String getCourseName(){
+        return test.getCourseInstance().getCourse().getName();
+    }
 }

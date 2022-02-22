@@ -14,6 +14,8 @@ tags:
   - name: User
   - name: Account
   - name: Enrollment
+  - name: Test
+
 paths:
   /pets:
     $ref: 'api-paths/pet-api.yaml#/pets'
@@ -33,3 +35,7 @@ paths:
     $ref: 'api-paths/account-api.yaml#/payments'
   /enrollments/my:
     $ref: 'api-paths/enrollment-api.yaml#/student-enrollments'
+  /tests:
+    $ref: 'api-paths/test.yaml#/tests'
+  /tests/new:
+    $ref: 'api-paths/test.yaml#/create-test'

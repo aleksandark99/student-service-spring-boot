@@ -1,0 +1,96 @@
+#/tests
+tests:
+  post:
+    tags:
+      - Test
+    operationId: registerForTest
+    description: desc
+    parameters:
+      - name: testId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+    responses:
+      200:
+        description: created
+        content:
+          application/json:
+            schema:
+              type: string
+      '400':
+        description: Invalid Balance
+        content:
+          application/json:
+            schema:
+              type: string
+  put:
+    tags:
+      - Test
+    operationId: gradeTest
+    description: desc
+    parameters:
+      - name: testInstanceId
+        in: query
+        required: true
+        schema:
+          type: integer
+          format: int64
+      - name: points
+        in: query
+        required: true
+        schema:
+          type: integer
+    responses:
+      200:
+        description: created
+        content:
+          application/json:
+            schema:
+              type: string
+      '400':
+        description: Invalid Balance
+        content:
+          application/json:
+            schema:
+              type: string
+  get:
+    tags:
+      - Test
+    operationId: getMyTests
+    description: desc
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../../api-components/TestInstance.yaml#/components/schemas/TestInstance'
+
+#/tests
+create-test:
+  post:
+    tags:
+      - Test
+    operationId: createTest
+    description: desc
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: '../../api-components/TestInstance.yaml#/components/schemas/TestInstanceRequest'
+    responses:
+      200:
+        description: created
+        content:
+          application/json:
+            schema:
+              type: string
+      '400':
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              type: string

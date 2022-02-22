@@ -1,0 +1,41 @@
+components:
+  schemas:
+    TestInstance:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: number
+            points:
+              type: number
+            isGraded:
+              type: boolean
+            courseName:
+              type: string
+            date:
+              type: string
+    TestInstanceRequest:
+      allOf:
+        - type: object
+          properties:
+            examPeriodId:
+              type: integer
+              format: int64
+            courseInstanceId:
+              type: integer
+              format: int64
+            title:
+              type: string
+            date:
+              type: date-time
+            place:
+              type: string
+            maxPoints:
+              type: integer
+      required:
+        - examPeriodId
+        - courseInstanceId
+        - title
+        - date
+        - maxPoints
+        - place

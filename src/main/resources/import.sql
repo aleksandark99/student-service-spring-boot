@@ -175,5 +175,13 @@ VALUES (2,-200.00,'2022-01-23 12:00:00',1);
 INSERT INTO `student_service`.`exam_period`(`id`,`end_date`,`name`,`start_date`)
 VALUES(1,'2022-04-23','January exam period','2022-01-23');
 
+--TEST
 INSERT INTO `student_service`.`test`(`id`,`date`,`max_points`,`place`,`title`,`course_instance_id`,`period_id`)
 VALUES(1,'2022-04-20',50,'NTP333','final exam',1,1);
+
+INSERT INTO `student_service`.`test`(`id`,`date`,`max_points`,`place`,`title`,`course_instance_id`,`period_id`)
+VALUES(2,'2022-04-20',50,'NTP333','Practical Exam',2,1);
+
+--TEST STUDENT INSTANCE
+INSERT INTO `student_service`.`test_student_instance` (`id`, `is_graded`, `points`, `student_id`, `test_id`)
+VALUES (1, false, 0, 1, 1);
