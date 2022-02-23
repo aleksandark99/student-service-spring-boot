@@ -27,6 +27,8 @@ public class CourseInstance {
     @OneToMany(mappedBy = "courseInstance")
     private List<LectureInstance> lectureInstances = new ArrayList<>();
 
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;

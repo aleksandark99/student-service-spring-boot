@@ -1,0 +1,15 @@
+#/enrollments/my
+lecture-instances:
+  get:
+    tags:
+      - LectureInstances
+    operationId: getMyLectures
+    description: desc
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../../api-components/LectureInstance.yaml#/components/schemas/LectureInstanceResponse'

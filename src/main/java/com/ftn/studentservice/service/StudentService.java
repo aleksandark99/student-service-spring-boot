@@ -34,20 +34,20 @@ public class StudentService {
 
         Pageable pageable = PageRequest.of(searchStudentDto.getPageNo(), searchStudentDto.getPageSize());
 
-        if (courseInstanceId > -1){
+        if (courseInstanceId > -1) {
 
             return studentRepository.findByEnrollments_CourseInstance_Id(Long.valueOf(courseInstanceId), pageable);
 
         } else {
 
-            return studentRepository.findAllByIndexContainsOrUser_FirstNameContainsOrUser_LastNameContains(searchStudentDto.getSearchWord(),searchStudentDto.getSearchWord(),searchStudentDto.getSearchWord(),pageable);
+            return studentRepository.findAllByIndexContainsOrUser_FirstNameContainsOrUser_LastNameContains(searchStudentDto.getSearchWord(), searchStudentDto.getSearchWord(), searchStudentDto.getSearchWord(), pageable);
 
         }
 
 
     }
 
-    public Student getLoggedInStudent(){
+    public Student getLoggedInStudent() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Student student = studentRepository.findByUser_Email(auth.getName()).orElseThrow();
         return student;
@@ -70,8 +70,9 @@ public class StudentService {
         enrollment.setPoints(0);
         enrollment.setPassed(false);
         enrollment.setCourseInstance(courseInstance);
-
-        enrollmentRepository.save(enrollment);
-
+        enrollment.setStudent(student);
+        var en = enrollmentRepository.save(enrollment);
+        student.getEnrollments().add(en);
+        studentRepository.save(student);
     }
 }

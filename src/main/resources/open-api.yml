@@ -15,6 +15,7 @@ tags:
   - name: Account
   - name: Enrollment
   - name: Test
+  - name: LectureInstances
 
 paths:
   /pets:
@@ -39,3 +40,5 @@ paths:
     $ref: 'api-paths/test.yaml#/tests'
   /tests/new:
     $ref: 'api-paths/test.yaml#/create-test'
+  /lecture-instances/my:
+    $ref: 'api-paths/lecture-instances.yaml#/lecture-instances'

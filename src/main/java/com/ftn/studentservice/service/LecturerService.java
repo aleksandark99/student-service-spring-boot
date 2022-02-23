@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,17 +35,23 @@ public class LecturerService {
     @Autowired
     private LectureInstanceRepository lectureInstanceRepository;
 
+    public Lecturer getLoggedInLecturer() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        Lecturer lecturer = lectureInstanceRepository.findByUser_Email(auth.getName()).orElseThrow();
+        return lecturer;
+    }
+
     public Page<Lecturer> getLecturer(Integer courseInstanceId, SearchLecturerDto searchLecturerDto) {
 
         Pageable pageable = PageRequest.of(searchLecturerDto.getPageNo(), searchLecturerDto.getPageSize());
 
-        if (courseInstanceId > -1){
+        if (courseInstanceId > -1) {
 
             return lecturerRepository.findByLectureInstances_CourseInstance_Id(Long.valueOf(courseInstanceId), pageable);
 
         } else {
 
-            return lecturerRepository.findAllByLecturerCodeContainsOrUser_FirstNameContainsOrUser_LastNameContains(searchLecturerDto.getSearchWord(),searchLecturerDto.getSearchWord(),searchLecturerDto.getSearchWord(),pageable);
+            return lecturerRepository.findAllByLecturerCodeContainsOrUser_FirstNameContainsOrUser_LastNameContains(searchLecturerDto.getSearchWord(), searchLecturerDto.getSearchWord(), searchLecturerDto.getSearchWord(), pageable);
 
         }
 
@@ -59,17 +67,19 @@ public class LecturerService {
     }
 
     public void addLecturerToCourse(Long lecturerId, Long courseInstanceId) throws CustomException {
-        Lecturer lecturer = lecturerRepository.findById(lecturerId).orElseThrow(() -> new CustomException("lecturer not found"));
+        Lecturer lecturer = lecturerRepository.findByUser_Id(lecturerId);
+        if (lecturer == null) throw new CustomException("lecturer not found");
 
         CourseInstance courseInstance = courseInstanceRepository.findById(courseInstanceId)
                 .orElseThrow(() -> new CustomException("Course instance not found"));
 
         LectureInstance lectureInstance = new LectureInstance();
-        courseInstance.getLectureInstances().add(lectureInstance);
         lectureInstance.setCourseInstance(courseInstance);
         lectureInstance.getLecturers().add(lecturer);
+        courseInstance.getLectureInstances().add(lectureInstance);
 
-        lectureInstanceRepository.save(lectureInstance);
-
+        var listance=lectureInstanceRepository.save(lectureInstance);
+        lecturer.getLectureInstances().add(listance);
+        lecturerRepository.save(lecturer);
     }
 }

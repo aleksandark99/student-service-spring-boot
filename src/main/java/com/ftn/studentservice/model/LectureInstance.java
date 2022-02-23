@@ -20,4 +20,25 @@ public class LectureInstance {
 
     @ManyToMany(mappedBy = "lectureInstances")
     private List<Lecturer> lecturers = new ArrayList<>();
+
+    @Transient
+    private String courseName;
+
+    @Transient
+    private String courseInstanceId;
+
+    @Transient
+    private String courseDescription;
+
+    public String getCourseName(){
+        return courseInstance.getName();
+    }
+
+    public String getCourseDescription(){
+        return  courseInstance.getDescription();
+    }
+
+    public Long getCourseInstanceId(){
+        return courseInstance.getId();
+    }
 }

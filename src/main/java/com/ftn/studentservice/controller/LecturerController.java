@@ -59,7 +59,7 @@ public class LecturerController {
                                                     @PathVariable("courseInstanceId") Long courseInstanceId){
         try{
             lecturerService.addLecturerToCourse(lecturerId,courseInstanceId);
-            return ResponseEntity.ok().body("Lecturer add to course");
+            return ResponseEntity.ok("Lecturer add to course");
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }

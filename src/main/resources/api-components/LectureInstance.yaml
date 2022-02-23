@@ -1,0 +1,13 @@
+components:
+  schemas:
+    LectureInstanceResponse:
+      allOf:
+        - type: object
+          properties:
+            courseName:
+              type: string
+            courseDescription:
+              type: string
+            courseInstanceId:
+              type: integer
+              format: int64
