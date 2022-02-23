@@ -7,16 +7,14 @@ import com.ftn.studentservice.dto.request.CreateCourseInstanceDto;
 import com.ftn.studentservice.dto.response.CourseInstanceCreationResponseDto;
 import com.ftn.studentservice.model.Course;
 import com.ftn.studentservice.model.CourseInstance;
+import com.ftn.studentservice.model.Test;
 import com.ftn.studentservice.service.CourseInstanceService;
 import com.ftn.studentservice.utills.ObjectMapperUtils;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +44,9 @@ public class CourseInstanceController implements CourseInstanceApi {
         return ResponseEntity.ok(courseInstanceService.createCourseInstance(createCourseInstanceDto));
     }
 
+    @GetMapping("/course-instances/{courseInstanceId}/tests")
+    public ResponseEntity<List<Test>> getTestsForCourseInstance(@PathVariable Long courseInstanceId){
+        return ResponseEntity.ok(courseInstanceService.getTestsForCourseInstancec(courseInstanceId));
+    }
 
 }

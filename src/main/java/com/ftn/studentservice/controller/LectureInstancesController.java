@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class LectureInstancesController implements LectureInstancesApi {
@@ -24,10 +25,16 @@ public class LectureInstancesController implements LectureInstancesApi {
     private ObjectMapperUtils mapper;
 
 
-
     @Override
     public ResponseEntity<List<LectureInstanceResponse>> getMyLectures() {
-        List<LectureInstance> myEnrollments=lecturerService.getLoggedInLecturer().getLectureInstances();
-        return ResponseEntity.ok(mapper.mapAll(myEnrollments,LectureInstanceResponse.class));
+        List<LectureInstance> myEnrollments = lecturerService.getLoggedInLecturer().getLectureInstances();
+        return ResponseEntity.ok(myEnrollments.stream().map(lectureInstance ->
+        {
+            var li = new LectureInstanceResponse();
+            li.setCourseName(lectureInstance.getCourseInstance().getCourse().getName());
+            li.setCourseDescription(lectureInstance.getCourseInstance().getDescription());
+            li.setCourseInstanceId(lectureInstance.getCourseInstance().getId());
+            return li;
+        }).collect(Collectors.toList()));
     }
 }

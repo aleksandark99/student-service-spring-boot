@@ -25,20 +25,20 @@ public class LectureInstance {
     private String courseName;
 
     @Transient
-    private String courseInstanceId;
+    private Long courseInstanceId;
 
     @Transient
     private String courseDescription;
 
-    public String getCourseName(){
+    public String getCourseName() {
         return courseInstance.getName();
     }
 
-    public String getCourseDescription(){
-        return  courseInstance.getDescription();
+    public String getCourseDescription() {
+        return courseInstance.getDescription();
     }
 
-    public Long getCourseInstanceId(){
+    public Long getCourseInstanceId() {
         return courseInstance.getId();
     }
 }

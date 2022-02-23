@@ -4,6 +4,7 @@ import com.ftn.studentservice.dto.request.CreateCourseInstanceDto;
 import com.ftn.studentservice.dto.response.CourseInstanceCreationResponseDto;
 import com.ftn.studentservice.model.Course;
 import com.ftn.studentservice.model.CourseInstance;
+import com.ftn.studentservice.model.Test;
 import com.ftn.studentservice.repository.CourseInstanceRepository;
 import com.ftn.studentservice.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,10 @@ public class CourseInstanceService {
         final CourseInstance saved = courseInstanceRepository.save(newCourseInstance);
 
         return CourseInstanceCreationResponseDto.builder().courseInstanceId(saved.getId()).successful(true).build();
+    }
+
+    public List<Test> getTestsForCourseInstancec(Long courseInstanceId) {
+        return courseInstanceRepository.findById(courseInstanceId).get().getTests();
     }
 
 /*    private boolean overlap(LocalDate mS, LocalDate mE, LocalDate nS, LocalDate nE){
