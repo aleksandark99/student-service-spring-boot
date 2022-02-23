@@ -28,6 +28,8 @@ components:
               type: string
             date:
               type: string
+            userName:
+              type: String
     TestInstanceRequest:
       allOf:
         - type: object

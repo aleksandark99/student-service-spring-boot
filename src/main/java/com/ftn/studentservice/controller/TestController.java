@@ -59,6 +59,7 @@ public class TestController implements TestApi {
                     t.setId(BigDecimal.valueOf(testStudentInstance.getId()));
                     t.setIsGraded(testStudentInstance.isGraded());
                     t.setCourseName(testStudentInstance.getCourseName());
+                    t.get
                     return t;
                 }).collect(Collectors.toList()));
     }
