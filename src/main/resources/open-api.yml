@@ -44,3 +44,5 @@ paths:
     $ref: 'api-paths/lecture-instances.yaml#/lecture-instances'
   /tests/test-instances:
     $ref: 'api-paths/test.yaml#/test-instances'
+  /tests/grade-tests:
+    $ref: 'api-paths/test.yaml#/grade-tests'

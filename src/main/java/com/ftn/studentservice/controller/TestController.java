@@ -1,21 +1,17 @@
 package com.ftn.studentservice.controller;
 
 
-import com.ftn.student_service.api.model.EnrollmentResponse;
 import com.ftn.student_service.api.model.TestInstance;
 import com.ftn.student_service.api.model.TestInstanceRequest;
 import com.ftn.student_service.api.model.TestInstanceWithUser;
 import com.ftn.student_service.api.spec.v1.TestApi;
-import com.ftn.studentservice.model.Enrollment;
 import com.ftn.studentservice.model.TestStudentInstance;
 import com.ftn.studentservice.service.StudentService;
 import com.ftn.studentservice.service.TestService;
 import com.ftn.studentservice.service.exceptions.CustomException;
-import com.ftn.studentservice.service.exceptions.InvalidBalanceException;
 import com.ftn.studentservice.utills.ObjectMapperUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
@@ -59,7 +55,8 @@ public class TestController implements TestApi {
                     t.setId(BigDecimal.valueOf(testStudentInstance.getId()));
                     t.setIsGraded(testStudentInstance.isGraded());
                     t.setCourseName(testStudentInstance.getCourseName());
-                    t.get
+                    t.setUserName(testStudentInstance.getStudent().getUser().getFirstName()+" "
+                            +testStudentInstance.getStudent().getUser().getLastName());
                     return t;
                 }).collect(Collectors.toList()));
     }
