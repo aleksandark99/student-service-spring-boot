@@ -37,7 +37,7 @@ public class LecturerService {
 
     public Lecturer getLoggedInLecturer() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Lecturer lecturer = lectureInstanceRepository.findByUser_Email(auth.getName()).orElseThrow();
+        Lecturer lecturer = lecturerRepository.findByUser_Email(auth.getName()).orElseThrow();
         return lecturer;
     }
 

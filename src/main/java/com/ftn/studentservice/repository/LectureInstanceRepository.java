@@ -14,6 +14,5 @@ import java.util.Optional;
 public interface LectureInstanceRepository extends JpaRepository<LectureInstance, Long> {
 
 
-    Optional<Lecturer> findByUser_Email(String email);
 }
 
