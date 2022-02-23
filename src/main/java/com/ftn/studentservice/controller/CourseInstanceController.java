@@ -3,6 +3,8 @@ package com.ftn.studentservice.controller;
 import com.ftn.student_service.api.model.CourseInstanceResponse;
 import com.ftn.student_service.api.model.CourseResponse;
 import com.ftn.student_service.api.spec.v1.CourseInstanceApi;
+import com.ftn.studentservice.dto.request.CreateCourseInstanceDto;
+import com.ftn.studentservice.dto.response.CourseInstanceCreationResponseDto;
 import com.ftn.studentservice.model.Course;
 import com.ftn.studentservice.model.CourseInstance;
 import com.ftn.studentservice.service.CourseInstanceService;
@@ -11,6 +13,9 @@ import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,6 +37,13 @@ public class CourseInstanceController implements CourseInstanceApi {
         Page<CourseInstance> courseInstances = courseInstanceService.getCourseInstances(courseId, page, size, search);
         return enrichWithPagingHeaders(ok(), courseInstances)
                 .body(mapper.mapAll(courseInstances.toList(), CourseInstanceResponse.class));
+    }
+
+
+    @PostMapping("/createCourseInstance")
+    public ResponseEntity<CourseInstanceCreationResponseDto> createCourseInstance
+            (@RequestBody CreateCourseInstanceDto createCourseInstanceDto){
+        return ResponseEntity.ok(courseInstanceService.createCourseInstance(createCourseInstanceDto));
     }
 
 
