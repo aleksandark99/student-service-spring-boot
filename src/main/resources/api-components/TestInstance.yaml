@@ -27,7 +27,7 @@ components:
             title:
               type: string
             date:
-              type: date-time
+              type: string
             place:
               type: string
             maxPoints:

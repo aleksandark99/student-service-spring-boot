@@ -82,8 +82,8 @@ public class TestService {
     public void createTest(TestInstanceRequest testInstanceRequest) throws CustomException {
         ExamPeriod examPeriod = examPeriodRepository.findById(testInstanceRequest.getExamPeriodId())
                 .orElseThrow(() -> new CustomException("Exam Period not found"));
-        if(examPeriod.getTests().stream().anyMatch(test -> test.getCourseInstance().getId().equals(testInstanceRequest.getCourseInstanceId())))
-            throw new CustomException("There is already test for this subject in this exam period");
+//        if(examPeriod.getTests().stream().anyMatch(test -> test.getCourseInstance().getId().equals(testInstanceRequest.getCourseInstanceId())))
+//            throw new CustomException("There is already test for this subject in this exam period");
         CourseInstance courseInstance = courseInstanceRepository.findById(testInstanceRequest.getCourseInstanceId())
                 .orElseThrow(() -> new CustomException("Course not found"));
 
