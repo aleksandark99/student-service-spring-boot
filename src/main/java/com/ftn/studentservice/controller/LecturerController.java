@@ -54,7 +54,7 @@ public class LecturerController {
     }
 
 
-    @PutMapping("/{lecturerId}/{courseInstanceId}")
+    @PostMapping("/{lecturerId}/{courseInstanceId}")
     public ResponseEntity<String> addLecturerToCourse(@PathVariable("lecturerId") Long lecturerId,
                                                     @PathVariable("courseInstanceId") Long courseInstanceId){
         try{
