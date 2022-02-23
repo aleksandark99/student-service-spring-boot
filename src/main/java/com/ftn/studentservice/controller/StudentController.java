@@ -52,7 +52,7 @@ public class StudentController {
 
 
     @PutMapping("/{studentId}/{courseInstanceId}")
-    public ResponseEntity<String> addLecturerToCourse(@PathVariable("lecturerId") Long studentId,
+    public ResponseEntity<String> addLecturerToCourse(@PathVariable("studentId") Long studentId,
                                                       @PathVariable("courseInstanceId") Long courseInstanceId) {
         try {
             studentService.addStudentToCourse(studentId, courseInstanceId);
