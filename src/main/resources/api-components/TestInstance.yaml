@@ -14,6 +14,20 @@ components:
               type: string
             date:
               type: string
+    TestInstanceWithUser:
+      allOf:
+        - type: object
+          properties:
+            id:
+              type: number
+            points:
+              type: number
+            isGraded:
+              type: boolean
+            courseName:
+              type: string
+            date:
+              type: string
     TestInstanceRequest:
       allOf:
         - type: object

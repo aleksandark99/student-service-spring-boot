@@ -42,3 +42,5 @@ paths:
     $ref: 'api-paths/test.yaml#/create-test'
   /lecture-instances/my:
     $ref: 'api-paths/lecture-instances.yaml#/lecture-instances'
+  /tests/test-instances:
+    $ref: 'api-paths/test.yaml#/test-instances'

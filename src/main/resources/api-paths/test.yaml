@@ -94,3 +94,25 @@ create-test:
           application/json:
             schema:
               type: string
+
+test-instances:
+  get:
+    tags:
+      - Test
+    operationId: getTestInstances
+    description: desc
+    parameters:
+      - name: testId
+        in: query
+        required: false
+        schema:
+          type: integer
+          format: int64
+    responses:
+      200:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../../api-components/TestInstance.yaml#/components/schemas/TestInstanceWithUser'

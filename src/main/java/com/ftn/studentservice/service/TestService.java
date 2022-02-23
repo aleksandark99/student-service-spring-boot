@@ -2,6 +2,7 @@ package com.ftn.studentservice.service;
 
 import com.ftn.student_service.api.model.TestInstance;
 import com.ftn.student_service.api.model.TestInstanceRequest;
+import com.ftn.student_service.api.model.TestInstanceWithUser;
 import com.ftn.studentservice.model.*;
 import com.ftn.studentservice.repository.*;
 import com.ftn.studentservice.service.exceptions.CustomException;
@@ -9,6 +10,7 @@ import com.ftn.studentservice.service.exceptions.InvalidBalanceException;
 import com.ftn.studentservice.utills.TimeUtills;
 import net.bytebuddy.implementation.bytecode.Throw;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -46,9 +48,9 @@ public class TestService {
     @Transactional
     public void registerForTest(Long testId) throws InvalidBalanceException, CustomException {
         Student student = studentService.getLoggedInStudent();
-        if(student.getAccount().getBalance()>200) {
+        if (student.getAccount().getBalance() > 200) {
             Test test = testRepository.findById(testId).orElseThrow();
-            if(test.getTestStudentInstances().stream().anyMatch(testStudentInstance ->
+            if (test.getTestStudentInstances().stream().anyMatch(testStudentInstance ->
                     testStudentInstance.getStudent().getId().equals(student.getId()) && testStudentInstance.getTest().getId().equals(testId)))
                 throw new CustomException("You have already registered for this test");
 
@@ -64,11 +66,10 @@ public class TestService {
             payment.setAccount(student.getAccount());
             paymentRepository.save(payment);
 
-            student.getAccount().setBalance(student.getAccount().getBalance()-200.00);
+            student.getAccount().setBalance(student.getAccount().getBalance() - 200.00);
             accountRepository.save(student.getAccount());
 
-        }
-        else{
+        } else {
             throw new InvalidBalanceException("You dont have enought money to register for exam! price 200.00");
         }
 
@@ -88,7 +89,7 @@ public class TestService {
                 .orElseThrow(() -> new CustomException("Course not found"));
 
         Test test = new Test();
-        test.setDate(TimeUtills.jodaToJavaLocalDateTime(testInstanceRequest.getDate()));
+        test.setDate(LocalDateTime.now());
         test.setDescription("null");
         test.setCourseInstance(courseInstance);
         test.setPeriod(examPeriod);
@@ -107,17 +108,28 @@ public class TestService {
         testStudentInstance.setPoints(points);
         testStudentInstance.setGraded(true);
 
-        var studentsEnrollment=testStudentInstance.getStudent().getEnrollments().stream()
-                .filter(enrollment ->enrollment.getCourseInstance().getId().equals(testStudentInstance.getTest().getCourseInstance().getId()))
+        var studentsEnrollment = testStudentInstance.getStudent().getEnrollments().stream()
+                .filter(enrollment -> enrollment.getCourseInstance().getId().equals(testStudentInstance.getTest().getCourseInstance().getId()))
                 .collect(Collectors.toList()).stream().findFirst();
 
         //add points to enrollment
-        studentsEnrollment.get().setPoints(studentsEnrollment.get().getPoints()+points);
-        if(studentsEnrollment.get().getPoints()>100)
+        studentsEnrollment.get().setPoints(studentsEnrollment.get().getPoints() + points);
+        if (studentsEnrollment.get().getPoints() > 100)
             studentsEnrollment.get().setPassed(true);
 
         enrollmentRepository.save(studentsEnrollment.get());
         testStudentInstanceRepository.save(testStudentInstance);
 
+    }
+
+    public List<TestStudentInstance> getTestInstancesForTest(Long testId) {
+        if (testId != null) {
+            var test = testRepository.findById(testId);
+            if (test != null)
+                return test.get().getTestStudentInstances();
+            else
+                return testStudentInstanceRepository.findAll();
+        } else
+            return testStudentInstanceRepository.findAll();
     }
 }
